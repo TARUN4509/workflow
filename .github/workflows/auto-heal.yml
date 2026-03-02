@@ -1,21 +1,20 @@
 name: Auto Heal Test Workflow
 
 on:
-  push:
-  pull_request:
+  push
+  pull_request
 
 jobs:
-  auto-heal:
-    runs-on: ubuntu-latest
+  auto-heal
+    runs-on ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name Checkout repository
+        uses actions/checkout@v4
 
-      - name: List files (debug)
-        run: ls -R
+      - name: Run auto heal
+        run echo "Running auto heal"
 
-      - name: Run auto-heal script
-        run: |
-          echo "Auto-heal workflow triggered"
-          echo "Scanning repository for issues..."
+      - name: Missing pipe
+        run:
+          echo "This will fail"
