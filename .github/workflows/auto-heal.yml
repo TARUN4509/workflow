@@ -1,20 +1,23 @@
 name: Auto Heal Test Workflow
 
 on:
-  push
-  pull_request
+  push:
+  pull_request:
 
 jobs:
-  auto-heal
-    runs-on ubuntu-latest
+  auto-heal:
+    runs-on: ubuntu-latest
 
     steps:
-      - name Checkout repository
-        uses actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Run auto heal
-        run echo "Running auto heal"
+      # ISSUE 1: Wrong command (will fail)
+      - name: Run auto heal script
+        run: |
+          echho "Running auto heal"
 
-      - name: Missing pipe
-        run:
-          echo "This will fail"
+      # ISSUE 2: Missing required permissions (logic issue)
+      - name: Try to write file
+        run: |
+          echo "test" > test.txt
